@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: >
+      Landing zone. Files exactly as delivered by the booking feed and the reference exports
+      (every column is text). Nothing is cleaned here.
+    tables:
+      - name: bookings
+        description: One row per delivery of a booking record. A replayed batch delivers the same booking twice.
+        columns:
+          - name: booking_id
+            description: Booking identifier from the source system.
+            data_tests:
+              - not_null
+              - unique:
+                  config:
+                    severity: warn   # known issue: a replayed feed batch re-delivers bookings; staging keeps the latest
+      - name: customers
+        columns:
+          - name: customer_id
+            data_tests: [not_null, unique]
+      - name: markets
+        columns:
+          - name: market_code
+            data_tests: [not_null, unique]
+      - name: segments
+        columns:
+          - name: segment_code
+            data_tests: [not_null, unique]
+      - name: supplier_tiers
+        columns:
+          - name: supplier_tier_code
+            data_tests: [not_null, unique]
+      - name: budget
+        description: FY2026 budget by market and month (net revenue, EUR).

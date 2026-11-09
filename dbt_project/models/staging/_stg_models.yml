@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_bookings
+    description: >
+      One row per booking, typed, deduplicated and cleaned. The only place where the feed's quirks are handled.
+    columns:
+      - name: booking_id
+        description: Unique booking identifier (the latest delivery wins).
+        data_tests: [not_null, unique]
+      - name: booking_date
+        data_tests: [not_null]
+      - name: market_code
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["UK", "DE", "ES", "FR", "IT", "NL", "NORD", "US"]
+      - name: segment_code
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["TO", "OTA", "RET", "CORP"]
+      - name: supplier_tier_code
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["DIR", "CHN", "XML"]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["confirmed", "cancelled"]
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+      - name: ttv_eur
+        description: Total transaction value of the booking (what the buyer pays), EUR.
+        data_tests: [not_null]
+      - name: revenue_eur
+        description: Net revenue (margin) earned on the booking, EUR.
+        data_tests: [not_null]
+
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        data_tests: [not_null, unique]
+
+  - name: stg_markets
+    columns:
+      - name: market_code
+        data_tests: [not_null, unique]
+
+  - name: stg_segments
+    columns:
+      - name: segment_code
+        data_tests: [not_null, unique]
+
+  - name: stg_supplier_tiers
+    columns:
+      - name: supplier_tier_code
+        data_tests: [not_null, unique]
+
+  - name: stg_budget
+    columns:
+      - name: budget_revenue_eur
+        data_tests: [not_null]
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [month_start, market_code]

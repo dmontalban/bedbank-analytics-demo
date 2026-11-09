@@ -1,0 +1,1137 @@
+{
+ "note": "Expected values for the cockpit. periods: see PERIODS in export_site_data.py. Tolerance for a JavaScript implementation: 1e-6 relative.",
+ "periods": {
+  "ltm": {
+   "label": "Last 12 months",
+   "cur": [
+    "2025-11",
+    "2026-10"
+   ],
+   "base": [
+    "2024-11",
+    "2025-10"
+   ]
+  },
+  "ytd": {
+   "label": "YTD 2026",
+   "cur": [
+    "2026-01",
+    "2026-10"
+   ],
+   "base": [
+    "2025-01",
+    "2025-10"
+   ]
+  },
+  "q": {
+   "label": "Last quarter",
+   "cur": [
+    "2026-08",
+    "2026-10"
+   ],
+   "base": [
+    "2025-08",
+    "2025-10"
+   ]
+  },
+  "m": {
+   "label": "Last month",
+   "cur": [
+    "2026-10",
+    "2026-10"
+   ],
+   "base": [
+    "2025-10",
+    "2025-10"
+   ]
+  },
+  "fy25": {
+   "label": "FY2025",
+   "cur": [
+    "2025-01",
+    "2025-12"
+   ],
+   "base": [
+    "2024-01",
+    "2024-12"
+   ]
+  }
+ },
+ "cases": [
+  {
+   "period": "ltm",
+   "market": null,
+   "segment": null,
+   "cur": {
+    "gross_bookings": 154648,
+    "net_bookings": 137662,
+    "net_ttv": 91073378.33000001,
+    "net_revenue": 10924191.280000001,
+    "gross_revenue": 12183938.02,
+    "abv": 661.5723898388808,
+    "take_rate": 0.11994933624199948,
+    "cancellation_rate": 0.1098365319952408,
+    "leakage": 1259746.7399999984
+   },
+   "base": {
+    "gross_bookings": 148312,
+    "net_bookings": 132965,
+    "net_ttv": 85067485.02000001,
+    "net_revenue": 10462487.4,
+    "gross_revenue": 11624742.760000002,
+    "abv": 639.7735119768361,
+    "take_rate": 0.12299043985537118,
+    "cancellation_rate": 0.1034778035492745,
+    "leakage": 1162255.3600000013
+   },
+   "yoy": {
+    "net_revenue_pct": 0.04412945625148379,
+    "net_bookings_pct": 0.03532508554882874,
+    "abv_pct": 0.03407280460031603,
+    "take_rate_pp": -0.3041103613371704,
+    "cancellation_rate_pp": 0.63587284459663
+   },
+   "bridge": {
+    "base": 10462487.4,
+    "volume": 369588.2624585417,
+    "mix": -150646.00540099666,
+    "price": 383907.3465980065,
+    "rate": -141145.72365555342,
+    "current": 10924191.280000001,
+    "residual": 2.6775524020195007e-09
+   }
+  },
+  {
+   "period": "ltm",
+   "market": "UK",
+   "segment": null,
+   "cur": {
+    "gross_bookings": 33156,
+    "net_bookings": 29556,
+    "net_ttv": 21211695.54,
+    "net_revenue": 2567367.33,
+    "gross_revenue": 2857487.6399999997,
+    "abv": 717.6781546894032,
+    "take_rate": 0.12103546013842136,
+    "cancellation_rate": 0.10857763300760048,
+    "leakage": 290120.3099999996
+   },
+   "base": {
+    "gross_bookings": 34485,
+    "net_bookings": 30829,
+    "net_ttv": 21335842.4,
+    "net_revenue": 2674317.41,
+    "gross_revenue": 2979175.83,
+    "abv": 692.0705309935449,
+    "take_rate": 0.12534388658588894,
+    "cancellation_rate": 0.10601710888792226,
+    "leakage": 304858.4199999999
+   },
+   "yoy": {
+    "net_revenue_pct": -0.039991543113051864,
+    "net_bookings_pct": -0.04129228972720489,
+    "abv_pct": 0.03700146523952652,
+    "take_rate_pp": -0.4308426447467581,
+    "cancellation_rate_pp": 0.256052411967822
+   },
+   "bridge": {
+    "base": 2674317.4099999997,
+    "volume": -110428.68931622822,
+    "mix": -37164.92714003101,
+    "price": 105727.46332424111,
+    "rate": -65083.92686798181,
+    "current": 2567367.33,
+    "residual": 3.2014213502407074e-10
+   }
+  },
+  {
+   "period": "ltm",
+   "market": null,
+   "segment": "OTA",
+   "cur": {
+    "gross_bookings": 65557,
+    "net_bookings": 55436,
+    "net_ttv": 31530095.639999997,
+    "net_revenue": 3600028.97,
+    "gross_revenue": 4254681.970000001,
+    "abv": 568.765705317844,
+    "take_rate": 0.1141775467827284,
+    "cancellation_rate": 0.15438473389569385,
+    "leakage": 654653.0000000005
+   },
+   "base": {
+    "gross_bookings": 60234,
+    "net_bookings": 51770,
+    "net_ttv": 28412676.309999995,
+    "net_revenue": 3446391.0999999996,
+    "gross_revenue": 4010658.19,
+    "abv": 548.82511705621,
+    "take_rate": 0.1212976582141621,
+    "cancellation_rate": 0.14051864395524127,
+    "leakage": 564267.0900000003
+   },
+   "yoy": {
+    "net_revenue_pct": 0.0445793485248962,
+    "net_bookings_pct": 0.07081321228510729,
+    "abv_pct": 0.036333228276051344,
+    "take_rate_pp": -0.7120111431433693,
+    "cancellation_rate_pp": 1.3866089940452575
+   },
+   "bridge": {
+    "base": 3446391.1,
+    "volume": 244050.02458180411,
+    "mix": -42463.004162407015,
+    "price": 132435.6110534955,
+    "rate": -180384.76147289266,
+    "current": 3600028.9699999997,
+    "residual": -2.9103830456733704e-10
+   }
+  },
+  {
+   "period": "ltm",
+   "market": "NORD",
+   "segment": "RET",
+   "cur": {
+    "gross_bookings": 2720,
+    "net_bookings": 2454,
+    "net_ttv": 1809912.95,
+    "net_revenue": 260142.22999999998,
+    "gross_revenue": 289555.57,
+    "abv": 737.5358394458027,
+    "take_rate": 0.1437319015812335,
+    "cancellation_rate": 0.09779411764705881,
+    "leakage": 29413.340000000026
+   },
+   "base": {
+    "gross_bookings": 2555,
+    "net_bookings": 2284,
+    "net_ttv": 1642627.1899999995,
+    "net_revenue": 238135.34000000003,
+    "gross_revenue": 266676.75999999995,
+    "abv": 719.1887872154114,
+    "take_rate": 0.14497223804020928,
+    "cancellation_rate": 0.10606653620352247,
+    "leakage": 28541.419999999925
+   },
+   "yoy": {
+    "net_revenue_pct": 0.09241337300041219,
+    "net_bookings_pct": 0.07443082311733806,
+    "abv_pct": 0.02551075956207316,
+    "take_rate_pp": -0.12403364589757826,
+    "cancellation_rate_pp": -0.8272418556463657
+   },
+   "bridge": {
+    "base": 238135.34,
+    "volume": 17724.609369527145,
+    "mix": -3084.5553090652684,
+    "price": 6458.64115432628,
+    "rate": 908.1947852118466,
+    "current": 260142.22999999998,
+    "residual": -1.8189894035458565e-11
+   }
+  },
+  {
+   "period": "ltm",
+   "market": "US",
+   "segment": "CORP",
+   "cur": {
+    "gross_bookings": 1327,
+    "net_bookings": 1257,
+    "net_ttv": 1020871.11,
+    "net_revenue": 143689.91,
+    "gross_revenue": 151429.88999999996,
+    "abv": 812.1488544152744,
+    "take_rate": 0.14075225421943816,
+    "cancellation_rate": 0.05275056518462695,
+    "leakage": 7739.979999999952
+   },
+   "base": {
+    "gross_bookings": 1118,
+    "net_bookings": 1048,
+    "net_ttv": 804367.66,
+    "net_revenue": 114972.32,
+    "gross_revenue": 123425.32999999997,
+    "abv": 767.526393129771,
+    "take_rate": 0.14293503545381225,
+    "cancellation_rate": 0.06261180679785328,
+    "leakage": 8453.009999999966
+   },
+   "yoy": {
+    "net_revenue_pct": 0.24977829446252797,
+    "net_bookings_pct": 0.19942748091603058,
+    "abv_pct": 0.05813801542842678,
+    "take_rate_pp": -0.21827812343740982,
+    "cancellation_rate_pp": -0.9861241613226324
+   },
+   "bridge": {
+    "base": 114972.32,
+    "volume": 22928.640152671756,
+    "mix": -1777.29345561043,
+    "price": 8238.75555865491,
+    "rate": -672.5122557162408,
+    "current": 143689.91,
+    "residual": 0.0
+   }
+  },
+  {
+   "period": "ytd",
+   "market": null,
+   "segment": null,
+   "cur": {
+    "gross_bookings": 132959,
+    "net_bookings": 118253,
+    "net_ttv": 78918401.28,
+    "net_revenue": 9450023.96,
+    "gross_revenue": 10544676.01,
+    "abv": 667.3691261955299,
+    "take_rate": 0.11974423970490246,
+    "cancellation_rate": 0.1106055250114697,
+    "leakage": 1094652.0499999989
+   },
+   "base": {
+    "gross_bookings": 127609,
+    "net_bookings": 114442,
+    "net_ttv": 73767931.14,
+    "net_revenue": 9045809.98,
+    "gross_revenue": 10049201.350000001,
+    "abv": 644.5879234896279,
+    "take_rate": 0.12262523619962266,
+    "cancellation_rate": 0.10318237741852065,
+    "leakage": 1003391.370000001
+   },
+   "yoy": {
+    "net_revenue_pct": 0.04468521679028248,
+    "net_bookings_pct": 0.033300711277328254,
+    "abv_pct": 0.03534227352968489,
+    "take_rate_pp": -0.2880996494720206,
+    "cancellation_rate_pp": 0.7423147592949042
+   },
+   "bridge": {
+    "base": 9045809.98,
+    "volume": 301231.9064135545,
+    "mix": -119547.43378811702,
+    "price": 338282.4016298756,
+    "rate": -115752.89425531535,
+    "current": 9450023.96,
+    "residual": 2.735760062932968e-09
+   }
+  },
+  {
+   "period": "ytd",
+   "market": "UK",
+   "segment": null,
+   "cur": {
+    "gross_bookings": 28213,
+    "net_bookings": 25107,
+    "net_ttv": 18205893.340000004,
+    "net_revenue": 2196535.62,
+    "gross_revenue": 2447454.17,
+    "abv": 725.132167921297,
+    "take_rate": 0.12064970276267693,
+    "cancellation_rate": 0.11009109275865736,
+    "leakage": 250918.5499999998
+   },
+   "base": {
+    "gross_bookings": 29594,
+    "net_bookings": 26451,
+    "net_ttv": 18461418.36,
+    "net_revenue": 2304903.45,
+    "gross_revenue": 2568089.6199999996,
+    "abv": 697.947841669502,
+    "take_rate": 0.12484974908504269,
+    "cancellation_rate": 0.10620396026221535,
+    "leakage": 263186.16999999946
+   },
+   "yoy": {
+    "net_revenue_pct": -0.04701621232767905,
+    "net_bookings_pct": -0.05081093342406717,
+    "abv_pct": 0.038948936623644625,
+    "take_rate_pp": -0.4200046322365758,
+    "cancellation_rate_pp": 0.3887132496442014
+   },
+   "bridge": {
+    "base": 2304903.4499999997,
+    "volume": -117114.29574685266,
+    "mix": -26719.378349321894,
+    "price": 93882.33691142559,
+    "rate": -58416.492815250596,
+    "current": 2196535.6199999996,
+    "residual": -5.238689482212067e-10
+   }
+  },
+  {
+   "period": "ytd",
+   "market": null,
+   "segment": "OTA",
+   "cur": {
+    "gross_bookings": 56465,
+    "net_bookings": 47615,
+    "net_ttv": 27338790.160000004,
+    "net_revenue": 3108513.69,
+    "gross_revenue": 3683546.35,
+    "abv": 574.1633972487663,
+    "take_rate": 0.11370341086081183,
+    "cancellation_rate": 0.15673426016116176,
+    "leakage": 575032.6600000001
+   },
+   "base": {
+    "gross_bookings": 52118,
+    "net_bookings": 44845,
+    "net_ttv": 24789425.669999998,
+    "net_revenue": 2986184.68,
+    "gross_revenue": 3472703.8200000003,
+    "abv": 552.780146504627,
+    "take_rate": 0.12046203569830427,
+    "cancellation_rate": 0.13954871637438127,
+    "leakage": 486519.14000000013
+   },
+   "yoy": {
+    "net_revenue_pct": 0.040964984791228565,
+    "net_bookings_pct": 0.06176831307838104,
+    "abv_pct": 0.03868310191556468,
+    "take_rate_pp": -0.6758624837492442,
+    "cancellation_rate_pp": 1.71855437867805
+   },
+   "bridge": {
+    "base": 2986184.6799999997,
+    "volume": 184451.59022410522,
+    "mix": -34672.291472595185,
+    "price": 119554.69701700455,
+    "rate": -147004.98576851416,
+    "current": 3108513.69,
+    "residual": -1.7462298274040222e-10
+   }
+  },
+  {
+   "period": "ytd",
+   "market": "NORD",
+   "segment": "RET",
+   "cur": {
+    "gross_bookings": 2336,
+    "net_bookings": 2108,
+    "net_ttv": 1565727.2300000002,
+    "net_revenue": 224643.18,
+    "gross_revenue": 249666.87999999998,
+    "abv": 742.7548529411765,
+    "take_rate": 0.14347529741818438,
+    "cancellation_rate": 0.0976027397260274,
+    "leakage": 25023.699999999983
+   },
+   "base": {
+    "gross_bookings": 2206,
+    "net_bookings": 1974,
+    "net_ttv": 1427278.7599999995,
+    "net_revenue": 207181.73000000004,
+    "gross_revenue": 231745.77,
+    "abv": 723.0388855116512,
+    "take_rate": 0.14515856033617436,
+    "cancellation_rate": 0.10516772438803268,
+    "leakage": 24564.03999999995
+   },
+   "yoy": {
+    "net_revenue_pct": 0.08428083885581983,
+    "net_bookings_pct": 0.0678824721377913,
+    "abv_pct": 0.027268197913828063,
+    "take_rate_pp": -0.16832629179899805,
+    "cancellation_rate_pp": -0.7564984662005281
+   },
+   "bridge": {
+    "base": 207181.72999999998,
+    "volume": 14064.008014184396,
+    "mix": -2866.355800741323,
+    "price": 5680.969430255405,
+    "rate": 582.8283563015601,
+    "current": 224643.18,
+    "residual": -2.546585164964199e-11
+   }
+  },
+  {
+   "period": "ytd",
+   "market": "US",
+   "segment": "CORP",
+   "cur": {
+    "gross_bookings": 1142,
+    "net_bookings": 1083,
+    "net_ttv": 885434.58,
+    "net_revenue": 124511.69999999998,
+    "gross_revenue": 131029.26999999999,
+    "abv": 817.5757894736842,
+    "take_rate": 0.140622133822693,
+    "cancellation_rate": 0.05166374781085814,
+    "leakage": 6517.570000000007
+   },
+   "base": {
+    "gross_bookings": 959,
+    "net_bookings": 894,
+    "net_ttv": 688437.0700000001,
+    "net_revenue": 98043.85,
+    "gross_revenue": 105884.25000000001,
+    "abv": 770.0638366890381,
+    "take_rate": 0.1424151229973714,
+    "cancellation_rate": 0.0677789363920751,
+    "leakage": 7840.400000000009
+   },
+   "yoy": {
+    "net_revenue_pct": 0.2699593090234622,
+    "net_bookings_pct": 0.21140939597315445,
+    "abv_pct": 0.06169871966579832,
+    "take_rate_pp": -0.17929891746784055,
+    "cancellation_rate_pp": -1.6115188581216966
+   },
+   "bridge": {
+    "base": 98043.85,
+    "volume": 20727.39110738255,
+    "mix": -1771.3410975749284,
+    "price": 7755.143873299639,
+    "rate": -243.34388310727158,
+    "current": 124511.70000000001,
+    "residual": 1.4551915228366852e-11
+   }
+  },
+  {
+   "period": "q",
+   "market": null,
+   "segment": null,
+   "cur": {
+    "gross_bookings": 36633,
+    "net_bookings": 32510,
+    "net_ttv": 21517234.080000002,
+    "net_revenue": 2567921.3600000003,
+    "gross_revenue": 2870464.0700000003,
+    "abv": 661.8650901261151,
+    "take_rate": 0.11934253958722561,
+    "cancellation_rate": 0.11254879480250046,
+    "leakage": 302542.70999999996
+   },
+   "base": {
+    "gross_bookings": 35657,
+    "net_bookings": 31972,
+    "net_ttv": 20475531.119999997,
+    "net_revenue": 2492207.0200000005,
+    "gross_revenue": 2767035.62,
+    "abv": 640.4207156261729,
+    "take_rate": 0.12171635526297404,
+    "cancellation_rate": 0.1033457666096419,
+    "leakage": 274828.5999999996
+   },
+   "yoy": {
+    "net_revenue_pct": 0.030380437657221426,
+    "net_bookings_pct": 0.01682722382084334,
+    "abv_pct": 0.03348482329928215,
+    "take_rate_pp": -0.23738156757484308,
+    "cancellation_rate_pp": 0.9203028192858564
+   },
+   "bridge": {
+    "base": 2492207.02,
+    "volume": 41936.92533341674,
+    "mix": -33928.04550174624,
+    "price": 88264.72820772622,
+    "rate": -20559.268039396167,
+    "current": 2567921.3600000003,
+    "residual": -2.473825588822365e-10
+   }
+  },
+  {
+   "period": "q",
+   "market": "UK",
+   "segment": null,
+   "cur": {
+    "gross_bookings": 7608,
+    "net_bookings": 6774,
+    "net_ttv": 4885453.68,
+    "net_revenue": 584095.63,
+    "gross_revenue": 649568.2999999999,
+    "abv": 721.2066253321523,
+    "take_rate": 0.11955811440627558,
+    "cancellation_rate": 0.10962145110410093,
+    "leakage": 65472.669999999925
+   },
+   "base": {
+    "gross_bookings": 8195,
+    "net_bookings": 7326,
+    "net_ttv": 5088645.63,
+    "net_revenue": 629336.86,
+    "gross_revenue": 702321.9200000002,
+    "abv": 694.6008230958231,
+    "take_rate": 0.12367472717883088,
+    "cancellation_rate": 0.10604026845637582,
+    "leakage": 72985.06000000017
+   },
+   "yoy": {
+    "net_revenue_pct": -0.0718871448273346,
+    "net_bookings_pct": -0.0753480753480753,
+    "abv_pct": 0.0383037297850406,
+    "take_rate_pp": -0.4116612772555303,
+    "cancellation_rate_pp": 0.3581182647725112
+   },
+   "bridge": {
+    "base": 629336.8599999999,
+    "volume": -47419.321146601134,
+    "mix": -8050.770351477899,
+    "price": 24111.372961095112,
+    "rate": -13882.511463016092,
+    "current": 584095.63,
+    "residual": 1.4551915228366852e-10
+   }
+  },
+  {
+   "period": "q",
+   "market": null,
+   "segment": "OTA",
+   "cur": {
+    "gross_bookings": 15713,
+    "net_bookings": 13162,
+    "net_ttv": 7528472.17,
+    "net_revenue": 849817.42,
+    "gross_revenue": 1012648.66,
+    "abv": 571.9854254672542,
+    "take_rate": 0.11288046243783884,
+    "cancellation_rate": 0.16234964678928276,
+    "leakage": 162831.24
+   },
+   "base": {
+    "gross_bookings": 14875,
+    "net_bookings": 12781,
+    "net_ttv": 6999119.119999999,
+    "net_revenue": 824300.7699999999,
+    "gross_revenue": 961621.05,
+    "abv": 547.6190532822158,
+    "take_rate": 0.11777207329484628,
+    "cancellation_rate": 0.14077310924369746,
+    "leakage": 137320.28000000014
+   },
+   "yoy": {
+    "net_revenue_pct": 0.030955509115926372,
+    "net_bookings_pct": 0.029809874031765826,
+    "abv_pct": 0.0444951139647094,
+    "take_rate_pp": -0.4891610857007442,
+    "cancellation_rate_pp": 2.1576537545585306
+   },
+   "bridge": {
+    "base": 824300.77,
+    "volume": 24572.30211798764,
+    "mix": -11240.295262101223,
+    "price": 38518.42060458344,
+    "rate": -26333.77746046985,
+    "current": 849817.42,
+    "residual": 1.4551915228366852e-11
+   }
+  },
+  {
+   "period": "q",
+   "market": "NORD",
+   "segment": "RET",
+   "cur": {
+    "gross_bookings": 654,
+    "net_bookings": 586,
+    "net_ttv": 434974.24,
+    "net_revenue": 62545.11,
+    "gross_revenue": 69562.84000000001,
+    "abv": 742.2768600682593,
+    "take_rate": 0.1437903771037108,
+    "cancellation_rate": 0.10397553516819569,
+    "leakage": 7017.7300000000105
+   },
+   "base": {
+    "gross_bookings": 592,
+    "net_bookings": 534,
+    "net_ttv": 379563.98,
+    "net_revenue": 54535.020000000004,
+    "gross_revenue": 61015.61,
+    "abv": 710.7939700374532,
+    "take_rate": 0.1436780697683695,
+    "cancellation_rate": 0.09797297297297303,
+    "leakage": 6480.5899999999965
+   },
+   "yoy": {
+    "net_revenue_pct": 0.1468797480958106,
+    "net_bookings_pct": 0.09737827715355807,
+    "abv_pct": 0.04429256768898493,
+    "take_rate_pp": 0.011230733534128845,
+    "cancellation_rate_pp": 0.600256219522266
+   },
+   "bridge": {
+    "base": 54535.02,
+    "volume": 5310.526292134831,
+    "mix": -1204.1889127569157,
+    "price": 2562.9391639194723,
+    "rate": 1340.8134567026132,
+    "current": 62545.11,
+    "residual": 1.8189894035458565e-12
+   }
+  },
+  {
+   "period": "q",
+   "market": "US",
+   "segment": "CORP",
+   "cur": {
+    "gross_bookings": 338,
+    "net_bookings": 323,
+    "net_ttv": 257508.41000000003,
+    "net_revenue": 36425.84,
+    "gross_revenue": 38369.42999999999,
+    "abv": 797.2396594427246,
+    "take_rate": 0.14145495286930626,
+    "cancellation_rate": 0.044378698224852076,
+    "leakage": 1943.5899999999965
+   },
+   "base": {
+    "gross_bookings": 294,
+    "net_bookings": 275,
+    "net_ttv": 208024.09000000003,
+    "net_revenue": 29832.45,
+    "gross_revenue": 32059.94,
+    "abv": 756.4512363636364,
+    "take_rate": 0.14340863118305192,
+    "cancellation_rate": 0.06462585034013602,
+    "leakage": 2227.489999999998
+   },
+   "yoy": {
+    "net_revenue_pct": 0.2210140300243526,
+    "net_bookings_pct": 0.17454545454545456,
+    "abv_pct": 0.0539207567101927,
+    "take_rate_pp": -0.19536783137456548,
+    "cancellation_rate_pp": -2.024715211528394
+   },
+   "bridge": {
+    "base": 29832.45,
+    "volume": 5207.118545454546,
+    "mix": -902.4891950742676,
+    "price": 2392.6914081381688,
+    "rate": -103.9307585184492,
+    "current": 36425.84,
+    "residual": -1.8189894035458565e-12
+   }
+  },
+  {
+   "period": "m",
+   "market": null,
+   "segment": null,
+   "cur": {
+    "gross_bookings": 12613,
+    "net_bookings": 11207,
+    "net_ttv": 7495814.779999999,
+    "net_revenue": 896663.75,
+    "gross_revenue": 1001113.4799999999,
+    "abv": 668.8511448202016,
+    "take_rate": 0.11962191920649354,
+    "cancellation_rate": 0.11147229049393481,
+    "leakage": 104449.72999999986
+   },
+   "base": {
+    "gross_bookings": 12298,
+    "net_bookings": 10997,
+    "net_ttv": 7163254.44,
+    "net_revenue": 871770.29,
+    "gross_revenue": 970091.4,
+    "abv": 651.3825988906066,
+    "take_rate": 0.12170031056442551,
+    "cancellation_rate": 0.10578955927793132,
+    "leakage": 98321.10999999999
+   },
+   "yoy": {
+    "net_revenue_pct": 0.02855506810171282,
+    "net_bookings_pct": 0.01909611712285164,
+    "abv_pct": 0.026817642901953986,
+    "take_rate_pp": -0.20783913579319746,
+    "cancellation_rate_pp": 0.5682731216003489
+   },
+   "bridge": {
+    "base": 871770.29,
+    "volume": 16647.42756206238,
+    "mix": -14145.164065192104,
+    "price": 29395.762093808953,
+    "rate": -7004.565590679329,
+    "current": 896663.75,
+    "residual": 6.184563972055912e-11
+   }
+  },
+  {
+   "period": "m",
+   "market": "UK",
+   "segment": null,
+   "cur": {
+    "gross_bookings": 2547,
+    "net_bookings": 2268,
+    "net_ttv": 1644286.7600000002,
+    "net_revenue": 196042.15999999997,
+    "gross_revenue": 217513.43,
+    "abv": 724.9941622574956,
+    "take_rate": 0.119226259536384,
+    "cancellation_rate": 0.10954063604240283,
+    "leakage": 21471.27000000002
+   },
+   "base": {
+    "gross_bookings": 2777,
+    "net_bookings": 2474,
+    "net_ttv": 1761398.04,
+    "net_revenue": 217836.97000000003,
+    "gross_revenue": 243770.02000000002,
+    "abv": 711.963637833468,
+    "take_rate": 0.12367276734337687,
+    "cancellation_rate": 0.10911055095426725,
+    "leakage": 25933.04999999999
+   },
+   "yoy": {
+    "net_revenue_pct": -0.10005101521564519,
+    "net_bookings_pct": -0.08326596604688763,
+    "abv_pct": 0.01830223305178902,
+    "take_rate_pp": -0.44465078069928776,
+    "cancellation_rate_pp": 0.04300850881355789
+   },
+   "bridge": {
+    "base": 217836.97000000003,
+    "volume": -18138.40574777688,
+    "mix": -3923.313351940451,
+    "price": 5568.7430472238375,
+    "rate": -5301.8339475065895,
+    "current": 196042.15999999997,
+    "residual": 2.9103830456733704e-11
+   }
+  },
+  {
+   "period": "m",
+   "market": null,
+   "segment": "OTA",
+   "cur": {
+    "gross_bookings": 5407,
+    "net_bookings": 4553,
+    "net_ttv": 2643859.8099999996,
+    "net_revenue": 298452.67,
+    "gross_revenue": 353317.18,
+    "abv": 580.6852207335821,
+    "take_rate": 0.11288521005204132,
+    "cancellation_rate": 0.15794340669502493,
+    "leakage": 54864.51000000001
+   },
+   "base": {
+    "gross_bookings": 5151,
+    "net_bookings": 4403,
+    "net_ttv": 2475829.44,
+    "net_revenue": 292214.38,
+    "gross_revenue": 341512.56999999995,
+    "abv": 562.3051192368839,
+    "take_rate": 0.11802686214119823,
+    "cancellation_rate": 0.1452145214521452,
+    "leakage": 49298.189999999944
+   },
+   "yoy": {
+    "net_revenue_pct": 0.021348333370862838,
+    "net_bookings_pct": 0.0340676811265046,
+    "abv_pct": 0.032687060579569716,
+    "take_rate_pp": -0.5141652089156914,
+    "cancellation_rate_pp": 1.272888524287974
+   },
+   "bridge": {
+    "base": 292214.38,
+    "volume": 9955.06631841926,
+    "mix": -5728.000082130893,
+    "price": 11107.088133005205,
+    "rate": -9095.864369293595,
+    "current": 298452.67,
+    "residual": 1.8189894035458565e-12
+   }
+  },
+  {
+   "period": "m",
+   "market": "NORD",
+   "segment": "RET",
+   "cur": {
+    "gross_bookings": 226,
+    "net_bookings": 203,
+    "net_ttv": 151781.28,
+    "net_revenue": 21737.4,
+    "gross_revenue": 24105.550000000003,
+    "abv": 747.6910344827586,
+    "take_rate": 0.14321528979067774,
+    "cancellation_rate": 0.10176991150442483,
+    "leakage": 2368.1500000000015
+   },
+   "base": {
+    "gross_bookings": 193,
+    "net_bookings": 182,
+    "net_ttv": 134493.32,
+    "net_revenue": 19055.489999999998,
+    "gross_revenue": 20238.13,
+    "abv": 738.9742857142858,
+    "take_rate": 0.14168354234990999,
+    "cancellation_rate": 0.05699481865284972,
+    "leakage": 1182.640000000003
+   },
+   "yoy": {
+    "net_revenue_pct": 0.14074211683876947,
+    "net_bookings_pct": 0.11538461538461542,
+    "abv_pct": 0.011795740307861013,
+    "take_rate_pp": 0.15317474407677556,
+    "cancellation_rate_pp": 4.4775092851575105
+   },
+   "bridge": {
+    "base": 19055.489999999998,
+    "volume": 2198.710384615384,
+    "mix": 114.15858755900263,
+    "price": 62.42690875725836,
+    "rate": 306.6141190683564,
+    "current": 21737.4,
+    "residual": 1.8189894035458565e-12
+   }
+  },
+  {
+   "period": "m",
+   "market": "US",
+   "segment": "CORP",
+   "cur": {
+    "gross_bookings": 126,
+    "net_bookings": 122,
+    "net_ttv": 96801.12000000001,
+    "net_revenue": 13751.21,
+    "gross_revenue": 14165.54,
+    "abv": 793.4518032786887,
+    "take_rate": 0.14205631091871662,
+    "cancellation_rate": 0.031746031746031744,
+    "leakage": 414.33000000000175
+   },
+   "base": {
+    "gross_bookings": 104,
+    "net_bookings": 97,
+    "net_ttv": 72748.67,
+    "net_revenue": 10574.439999999999,
+    "gross_revenue": 11650.88,
+    "abv": 749.9862886597938,
+    "take_rate": 0.14535578451124948,
+    "cancellation_rate": 0.06730769230769229,
+    "leakage": 1076.4400000000005
+   },
+   "yoy": {
+    "net_revenue_pct": 0.30041969125551815,
+    "net_bookings_pct": 0.25773195876288657,
+    "abv_pct": 0.057955079014266664,
+    "take_rate_pp": -0.32994735925328533,
+    "cancellation_rate_pp": -3.5561660561660546
+   },
+   "bridge": {
+    "base": 10574.439999999999,
+    "volume": 2725.3711340206182,
+    "mix": -537.3625552660378,
+    "price": 1117.507157195633,
+    "rate": -128.74573595021207,
+    "current": 13751.21,
+    "residual": -9.094947017729282e-13
+   }
+  },
+  {
+   "period": "fy25",
+   "market": null,
+   "segment": null,
+   "cur": {
+    "gross_bookings": 149298,
+    "net_bookings": 133851,
+    "net_ttv": 85922908.19,
+    "net_revenue": 10519977.3,
+    "gross_revenue": 11688463.36,
+    "abv": 641.9295200633541,
+    "take_rate": 0.12243507024619485,
+    "cancellation_rate": 0.10346421251456817,
+    "leakage": 1168486.0599999987
+   },
+   "base": {
+    "gross_bookings": 140817,
+    "net_bookings": 126307,
+    "net_ttv": 78797157.99,
+    "net_revenue": 9884418.610000001,
+    "gross_revenue": 10975526.84,
+    "abv": 623.8542439453079,
+    "take_rate": 0.12544130857174335,
+    "cancellation_rate": 0.10304153617816025,
+    "leakage": 1091108.2299999986
+   },
+   "yoy": {
+    "net_revenue_pct": 0.06429904631487471,
+    "net_bookings_pct": 0.05972748937113548,
+    "abv_pct": 0.028973556393135258,
+    "take_rate_pp": -0.3006238325548499,
+    "cancellation_rate_pp": 0.042267633640791225
+   },
+   "bridge": {
+    "base": 9884418.61,
+    "volume": 590371.507468628,
+    "mix": -157231.13450780697,
+    "price": 347489.5170161175,
+    "rate": -145071.19997693918,
+    "current": 10519977.3,
+    "residual": 2.0954757928848267e-09
+   }
+  },
+  {
+   "period": "fy25",
+   "market": "UK",
+   "segment": null,
+   "cur": {
+    "gross_bookings": 34537,
+    "net_bookings": 30900,
+    "net_ttv": 21467220.560000002,
+    "net_revenue": 2675735.16,
+    "gross_revenue": 2978123.09,
+    "abv": 694.7320569579289,
+    "take_rate": 0.12464283173135665,
+    "cancellation_rate": 0.10530735153603377,
+    "leakage": 302387.9299999997
+   },
+   "base": {
+    "gross_bookings": 33681,
+    "net_bookings": 30206,
+    "net_ttv": 20355484.799999997,
+    "net_revenue": 2605583.6800000006,
+    "gross_revenue": 2895950.08,
+    "abv": 673.8887903065615,
+    "take_rate": 0.12800401000520514,
+    "cancellation_rate": 0.10317389626198747,
+    "leakage": 290366.39999999944
+   },
+   "yoy": {
+    "net_revenue_pct": 0.026923518341962938,
+    "net_bookings_pct": 0.022975567767993033,
+    "abv_pct": 0.030929831377497052,
+    "take_rate_pp": -0.3361178273848492,
+    "cancellation_rate_pp": 0.2133455274046292
+   },
+   "bridge": {
+    "base": 2605583.6799999997,
+    "volume": 59864.76441501687,
+    "mix": -44807.6180013041,
+    "price": 91436.16408734133,
+    "rate": -36341.83050105378,
+    "current": 2675735.1600000006,
+    "residual": 5.820766091346741e-10
+   }
+  },
+  {
+   "period": "fy25",
+   "market": null,
+   "segment": "OTA",
+   "cur": {
+    "gross_bookings": 61210,
+    "net_bookings": 52666,
+    "net_ttv": 28980731.15,
+    "net_revenue": 3477699.96,
+    "gross_revenue": 4043839.44,
+    "abv": 550.2740126457296,
+    "take_rate": 0.12000042172849046,
+    "cancellation_rate": 0.13958503512497955,
+    "leakage": 566139.48
+   },
+   "base": {
+    "gross_bookings": 54873,
+    "net_bookings": 46978,
+    "net_ttv": 25117823.159999996,
+    "net_revenue": 3190507.94,
+    "gross_revenue": 3725076.37,
+    "abv": 534.672041381072,
+    "take_rate": 0.12702167380017498,
+    "cancellation_rate": 0.143877681191114,
+    "leakage": 534568.4300000002
+   },
+   "yoy": {
+    "net_revenue_pct": 0.09001451348840717,
+    "net_bookings_pct": 0.12107795138149768,
+    "abv_pct": 0.02918045092531374,
+    "take_rate_pp": -0.7021252071684525,
+    "cancellation_rate_pp": -0.42926460661344423
+   },
+   "bridge": {
+    "base": 3190507.9400000004,
+    "volume": 386300.16524160246,
+    "mix": -39429.10019411193,
+    "price": 113214.07752037153,
+    "rate": -172893.12256786195,
+    "current": 3477699.96,
+    "residual": -5.820766091346741e-10
+   }
+  },
+  {
+   "period": "fy25",
+   "market": "NORD",
+   "segment": "RET",
+   "cur": {
+    "gross_bookings": 2590,
+    "net_bookings": 2320,
+    "net_ttv": 1671464.48,
+    "net_revenue": 242680.78000000003,
+    "gross_revenue": 271634.46,
+    "abv": 720.4588275862069,
+    "take_rate": 0.1451905098216625,
+    "cancellation_rate": 0.10424710424710426,
+    "leakage": 28953.679999999993
+   },
+   "base": {
+    "gross_bookings": 2457,
+    "net_bookings": 2197,
+    "net_ttv": 1517992.97,
+    "net_revenue": 223125.15000000002,
+    "gross_revenue": 249209.74999999997,
+    "abv": 690.9389940828402,
+    "take_rate": 0.14698694553242894,
+    "cancellation_rate": 0.10582010582010581,
+    "leakage": 26084.599999999948
+   },
+   "yoy": {
+    "net_revenue_pct": 0.08764422119156001,
+    "net_bookings_pct": 0.05598543468365946,
+    "abv_pct": 0.04272422566416534,
+    "take_rate_pp": -0.17964357107664308,
+    "cancellation_rate_pp": -0.15730015730015534
+   },
+   "bridge": {
+    "base": 223125.15000000002,
+    "volume": 12491.758511606738,
+    "mix": -4031.811801158852,
+    "price": 10944.847359508984,
+    "rate": 150.83593004308102,
+    "current": 242680.78,
+    "residual": 2.1827872842550278e-11
+   }
+  },
+  {
+   "period": "fy25",
+   "market": "US",
+   "segment": "CORP",
+   "cur": {
+    "gross_bookings": 1144,
+    "net_bookings": 1068,
+    "net_ttv": 823873.6,
+    "net_revenue": 117222.06000000001,
+    "gross_revenue": 126284.87,
+    "abv": 771.4172284644195,
+    "take_rate": 0.1422816072756792,
+    "cancellation_rate": 0.06643356643356646,
+    "leakage": 9062.809999999983
+   },
+   "base": {
+    "gross_bookings": 1052,
+    "net_bookings": 1001,
+    "net_ttv": 759467.3699999999,
+    "net_revenue": 109037.02,
+    "gross_revenue": 114330.23,
+    "abv": 758.7086613386613,
+    "take_rate": 0.14357038143719067,
+    "cancellation_rate": 0.048479087452471537,
+    "leakage": 5293.209999999992
+   },
+   "yoy": {
+    "net_revenue_pct": 0.07506661499002831,
+    "net_bookings_pct": 0.066933066933067,
+    "abv_pct": 0.016750259715416105,
+    "take_rate_pp": -0.12887741615114634,
+    "cancellation_rate_pp": 1.7954478981094923
+   },
+   "bridge": {
+    "base": 109037.01999999999,
+    "volume": 7298.182157842158,
+    "mix": -690.7617864261265,
+    "price": 2171.424134111041,
+    "rate": -593.8045055270768,
+    "current": 117222.06,
+    "residual": 1.3642420526593924e-11
+   }
+  }
+ ]
+}

@@ -1,0 +1,946 @@
+{
+ "versions": {
+  "dbt_core": "1.12.6",
+  "adapter": "duckdb",
+  "duckdb": "2.0.0"
+ },
+ "run": {
+  "models": 17,
+  "tests": 71,
+  "nodes": 88,
+  "success": 87,
+  "passed": 70,
+  "models_ok": 17,
+  "warn": 1,
+  "error": 0,
+  "skipped": 0,
+  "elapsed_seconds": 2.78
+ },
+ "nodes": [
+  {
+   "id": "raw.bookings",
+   "layer": "source",
+   "rows": 426034
+  },
+  {
+   "id": "raw.customers",
+   "layer": "source",
+   "rows": 483
+  },
+  {
+   "id": "raw.markets",
+   "layer": "source",
+   "rows": 8
+  },
+  {
+   "id": "raw.segments",
+   "layer": "source",
+   "rows": 4
+  },
+  {
+   "id": "raw.supplier_tiers",
+   "layer": "source",
+   "rows": 3
+  },
+  {
+   "id": "raw.budget",
+   "layer": "source",
+   "rows": 96
+  },
+  {
+   "id": "int_bookings_enriched",
+   "layer": "intermediate",
+   "materialized": "view",
+   "rows": 423074,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "mart_revenue_bridge",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 3,
+   "description": "Price-volume-mix-rate bridge, computed in SQL for three fixed periods.",
+   "status": "success"
+  },
+  {
+   "id": "dim_segment",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 4,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "dq_log",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 4,
+   "description": "What the staging layer fixed, in numbers.",
+   "status": "success"
+  },
+  {
+   "id": "dim_market",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 8,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "fct_bookings",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 423074,
+   "description": "Grain: one row per booking. Source of truth for every metric.",
+   "status": "success"
+  },
+  {
+   "id": "mart_revenue_cube",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 3264,
+   "description": "Month x market x segment x supplier tier. Feeds the dashboard and the forecast.",
+   "status": "success"
+  },
+  {
+   "id": "dim_supplier_tier",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 3,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "mart_budget_vs_actual",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 96,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "dim_date",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 1461,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "dim_customer",
+   "layer": "marts",
+   "materialized": "table",
+   "rows": 483,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "stg_markets",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 8,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "stg_bookings",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 423074,
+   "description": "One row per booking, typed, deduplicated and cleaned. The only place where the feed's quirks are handled.",
+   "status": "success"
+  },
+  {
+   "id": "stg_supplier_tiers",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 3,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "stg_customers",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 483,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "stg_budget",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 96,
+   "description": "",
+   "status": "success"
+  },
+  {
+   "id": "stg_segments",
+   "layer": "staging",
+   "materialized": "table",
+   "rows": 4,
+   "description": "",
+   "status": "success"
+  }
+ ],
+ "edges": [
+  [
+   "stg_bookings",
+   "int_bookings_enriched"
+  ],
+  [
+   "mart_revenue_cube",
+   "mart_revenue_bridge"
+  ],
+  [
+   "stg_segments",
+   "dim_segment"
+  ],
+  [
+   "raw.bookings",
+   "dq_log"
+  ],
+  [
+   "fct_bookings",
+   "dq_log"
+  ],
+  [
+   "stg_markets",
+   "dim_market"
+  ],
+  [
+   "int_bookings_enriched",
+   "fct_bookings"
+  ],
+  [
+   "fct_bookings",
+   "mart_revenue_cube"
+  ],
+  [
+   "stg_supplier_tiers",
+   "dim_supplier_tier"
+  ],
+  [
+   "mart_revenue_cube",
+   "mart_budget_vs_actual"
+  ],
+  [
+   "stg_budget",
+   "mart_budget_vs_actual"
+  ],
+  [
+   "stg_customers",
+   "dim_customer"
+  ],
+  [
+   "raw.markets",
+   "stg_markets"
+  ],
+  [
+   "raw.bookings",
+   "stg_bookings"
+  ],
+  [
+   "raw.supplier_tiers",
+   "stg_supplier_tiers"
+  ],
+  [
+   "raw.customers",
+   "stg_customers"
+  ],
+  [
+   "raw.budget",
+   "stg_budget"
+  ],
+  [
+   "raw.segments",
+   "stg_segments"
+  ]
+ ],
+ "tests_by_type": {
+  "singular": {
+   "pass": 10
+  },
+  "not_null": {
+   "pass": 30
+  },
+  "unique": {
+   "pass": 16,
+   "warn": 1
+  },
+  "relationships": {
+   "pass": 7
+  },
+  "unique_combination_of_columns": {
+   "pass": 2
+  },
+  "accepted_values": {
+   "pass": 5
+  }
+ },
+ "tests_by_node": {
+  "cross-model": {
+   "pass": 19,
+   "warn": 1
+  },
+  "dim_date": {
+   "pass": 2
+  },
+  "dim_market": {
+   "pass": 2
+  },
+  "dim_segment": {
+   "pass": 2
+  },
+  "dim_supplier_tier": {
+   "pass": 2
+  },
+  "dim_customer": {
+   "pass": 3
+  },
+  "fct_bookings": {
+   "pass": 8
+  },
+  "mart_revenue_cube": {
+   "pass": 4
+  },
+  "mart_revenue_bridge": {
+   "pass": 2
+  },
+  "mart_budget_vs_actual": {
+   "pass": 1
+  },
+  "dq_log": {
+   "pass": 1
+  },
+  "stg_bookings": {
+   "pass": 14
+  },
+  "stg_customers": {
+   "pass": 2
+  },
+  "stg_markets": {
+   "pass": 2
+  },
+  "stg_segments": {
+   "pass": 2
+  },
+  "stg_supplier_tiers": {
+   "pass": 2
+  },
+  "stg_budget": {
+   "pass": 2
+  }
+ },
+ "tests": [
+  {
+   "name": "source_unique_raw_bookings_booking_id",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "warn",
+   "failures": 1900,
+   "message": "Got 1900 results, configured to warn if != 0"
+  },
+  {
+   "name": "accepted_values_mart_revenue_bridge_period__LTM__YTD26__FY25",
+   "type": "accepted_values",
+   "owner": "mart_revenue_bridge",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "accepted_values_stg_bookings_market_code__UK__DE__ES__FR__IT__NL__NORD__US",
+   "type": "accepted_values",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "accepted_values_stg_bookings_segment_code__TO__OTA__RET__CORP",
+   "type": "accepted_values",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "accepted_values_stg_bookings_status__confirmed__cancelled",
+   "type": "accepted_values",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "accepted_values_stg_bookings_supplier_tier_code__DIR__CHN__XML",
+   "type": "accepted_values",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dim_customer_customer_id",
+   "type": "not_null",
+   "owner": "dim_customer",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dim_date_date_day",
+   "type": "not_null",
+   "owner": "dim_date",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dim_market_market_code",
+   "type": "not_null",
+   "owner": "dim_market",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dim_segment_segment_code",
+   "type": "not_null",
+   "owner": "dim_segment",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dim_supplier_tier_supplier_tier_code",
+   "type": "not_null",
+   "owner": "dim_supplier_tier",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_dq_log_rows_affected",
+   "type": "not_null",
+   "owner": "dq_log",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_fct_bookings_booking_date",
+   "type": "not_null",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_fct_bookings_booking_id",
+   "type": "not_null",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_mart_budget_vs_actual_budget_revenue_eur",
+   "type": "not_null",
+   "owner": "mart_budget_vs_actual",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_mart_revenue_cube_net_bookings",
+   "type": "not_null",
+   "owner": "mart_revenue_cube",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_mart_revenue_cube_net_revenue_eur",
+   "type": "not_null",
+   "owner": "mart_revenue_cube",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_mart_revenue_cube_net_ttv_eur",
+   "type": "not_null",
+   "owner": "mart_revenue_cube",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_booking_date",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_booking_id",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_customer_id",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_market_code",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_revenue_eur",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_segment_code",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_supplier_tier_code",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_bookings_ttv_eur",
+   "type": "not_null",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_budget_budget_revenue_eur",
+   "type": "not_null",
+   "owner": "stg_budget",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_customers_customer_id",
+   "type": "not_null",
+   "owner": "stg_customers",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_markets_market_code",
+   "type": "not_null",
+   "owner": "stg_markets",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_segments_segment_code",
+   "type": "not_null",
+   "owner": "stg_segments",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "not_null_stg_supplier_tiers_supplier_tier_code",
+   "type": "not_null",
+   "owner": "stg_supplier_tiers",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_not_null_raw_bookings_booking_id",
+   "type": "not_null",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_not_null_raw_customers_customer_id",
+   "type": "not_null",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_not_null_raw_markets_market_code",
+   "type": "not_null",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_not_null_raw_segments_segment_code",
+   "type": "not_null",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_not_null_raw_supplier_tiers_supplier_tier_code",
+   "type": "not_null",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_dim_customer_market_code__market_code__ref_dim_market_",
+   "type": "relationships",
+   "owner": "dim_customer",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_fct_bookings_booking_date__date_day__ref_dim_date_",
+   "type": "relationships",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_fct_bookings_customer_id__customer_id__ref_dim_customer_",
+   "type": "relationships",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_fct_bookings_market_code__market_code__ref_dim_market_",
+   "type": "relationships",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_fct_bookings_segment_code__segment_code__ref_dim_segment_",
+   "type": "relationships",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_fct_bookings_supplier_tier_code__supplier_tier_code__ref_dim_supplier_tier_",
+   "type": "relationships",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "relationships_stg_bookings_customer_id__customer_id__ref_stg_customers_",
+   "type": "relationships",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_bridge_identity",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_budget_covers_every_market_month",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_cancellation_after_booking",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_cube_complete_grid",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_cube_reconciles_to_fct",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_dq_log_reconciles",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_net_le_gross_bookings",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_net_revenue_le_net_ttv",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_no_future_bookings",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "assert_take_rate_in_bounds",
+   "type": "singular",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_unique_raw_customers_customer_id",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_unique_raw_markets_market_code",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_unique_raw_segments_segment_code",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "source_unique_raw_supplier_tiers_supplier_tier_code",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_dim_customer_customer_id",
+   "type": "unique",
+   "owner": "dim_customer",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_dim_date_date_day",
+   "type": "unique",
+   "owner": "dim_date",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_dim_market_market_code",
+   "type": "unique",
+   "owner": "dim_market",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_dim_segment_segment_code",
+   "type": "unique",
+   "owner": "dim_segment",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_dim_supplier_tier_supplier_tier_code",
+   "type": "unique",
+   "owner": "dim_supplier_tier",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_fct_bookings_booking_id",
+   "type": "unique",
+   "owner": "fct_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_mart_revenue_bridge_period",
+   "type": "unique",
+   "owner": "mart_revenue_bridge",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_stg_bookings_booking_id",
+   "type": "unique",
+   "owner": "stg_bookings",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_stg_customers_customer_id",
+   "type": "unique",
+   "owner": "stg_customers",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_stg_markets_market_code",
+   "type": "unique",
+   "owner": "stg_markets",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_stg_segments_segment_code",
+   "type": "unique",
+   "owner": "stg_segments",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_stg_supplier_tiers_supplier_tier_code",
+   "type": "unique",
+   "owner": "stg_supplier_tiers",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_combination_of_columns_mart_revenue_cube_month_start__market_code__segment_code__supplier_tier_code",
+   "type": "unique_combination_of_columns",
+   "owner": "mart_revenue_cube",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  },
+  {
+   "name": "unique_combination_of_columns_stg_budget_month_start__market_code",
+   "type": "unique_combination_of_columns",
+   "owner": "stg_budget",
+   "status": "pass",
+   "failures": 0,
+   "message": null
+  }
+ ],
+ "warnings": [
+  {
+   "name": "source_unique_raw_bookings_booking_id",
+   "type": "unique",
+   "owner": "cross-model",
+   "status": "warn",
+   "failures": 1900,
+   "message": "Got 1900 results, configured to warn if != 0"
+  }
+ ],
+ "dq_log": [
+  {
+   "check_id": 1,
+   "check_name": "Replayed feed batch",
+   "rule_applied": "Keep the latest delivery per booking_id",
+   "rows_affected": 1900,
+   "raw_rows": 426034
+  },
+  {
+   "check_id": 2,
+   "check_name": "Inconsistent market codes",
+   "rule_applied": "Trim, upper-case, map GB to UK",
+   "rows_affected": 12222,
+   "raw_rows": 426034
+  },
+  {
+   "check_id": 3,
+   "check_name": "Zero-value test bookings",
+   "rule_applied": "Exclude bookings with TTV <= 0",
+   "rows_affected": 1060,
+   "raw_rows": 426034
+  },
+  {
+   "check_id": 4,
+   "check_name": "Reconciliation",
+   "rule_applied": "raw rows - duplicates - zero-value - rows in fct_bookings (0 = fully reconciled)",
+   "rows_affected": 0,
+   "raw_rows": 426034
+  }
+ ]
+}

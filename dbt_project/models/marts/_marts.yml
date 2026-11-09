@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: dim_date
+    columns:
+      - name: date_day
+        data_tests: [not_null, unique]
+
+  - name: dim_market
+    columns:
+      - name: market_code
+        data_tests: [not_null, unique]
+
+  - name: dim_segment
+    columns:
+      - name: segment_code
+        data_tests: [not_null, unique]
+
+  - name: dim_supplier_tier
+    columns:
+      - name: supplier_tier_code
+        data_tests: [not_null, unique]
+
+  - name: dim_customer
+    columns:
+      - name: customer_id
+        data_tests: [not_null, unique]
+      - name: market_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_market')
+                field: market_code
+
+  - name: fct_bookings
+    description: "Grain: one row per booking. Source of truth for every metric."
+    columns:
+      - name: booking_id
+        data_tests: [not_null, unique]
+      - name: booking_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: market_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_market')
+                field: market_code
+      - name: segment_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_segment')
+                field: segment_code
+      - name: supplier_tier_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_supplier_tier')
+                field: supplier_tier_code
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+
+  - name: mart_revenue_cube
+    description: "Month x market x segment x supplier tier. Feeds the dashboard and the forecast."
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [month_start, market_code, segment_code, supplier_tier_code]
+    columns:
+      - name: net_bookings
+        data_tests: [not_null]
+      - name: net_ttv_eur
+        data_tests: [not_null]
+      - name: net_revenue_eur
+        data_tests: [not_null]
+
+  - name: mart_revenue_bridge
+    description: "Price-volume-mix-rate bridge, computed in SQL for three fixed periods."
+    columns:
+      - name: period
+        data_tests:
+          - unique
+          - accepted_values:
+              arguments:
+                values: ["LTM", "YTD26", "FY25"]
+
+  - name: mart_budget_vs_actual
+    columns:
+      - name: budget_revenue_eur
+        data_tests: [not_null]
+
+  - name: dq_log
+    description: "What the staging layer fixed, in numbers."
+    columns:
+      - name: rows_affected
+        data_tests: [not_null]

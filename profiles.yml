@@ -1,7 +1,0 @@
-bedbank:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: ../data/bedbank.duckdb
-      threads: 4

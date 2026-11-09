@@ -1,48 +1,93 @@
-Bedbank analytics demo
+<div align="center">
 
-A portfolio project by David Montalbán Salar (LinkedIn). Interactive demo: davidprojectsportfolio.netlify.app
+# Bedbank Analytics Demo
 
-All data is synthetic. The company is fictional (a B2B accommodation wholesaler). No real company or client data is used.
+**From a messy booking feed to decisions: tested dbt pipeline, revenue bridge and forecast**
 
-What is this?
+![dbt](https://img.shields.io/badge/dbt-17_models_·_71_tests-FF694B?logo=dbt&logoColor=white)
+![DuckDB](https://img.shields.io/badge/DuckDB-local_warehouse-FFF000?logo=duckdb&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
+![Data](https://img.shields.io/badge/data-100%25_synthetic-2F6DB5)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-A small, end-to-end analytics project that answers two business questions:
+[**Interactive demo**](https://davidprojectsportfolio.netlify.app/) · [LinkedIn](https://www.linkedin.com/in/david-montalb%C3%A1n-290584185/)
 
-Why did revenue change?
-Where will we end the year versus budget?
-What it does
-Creates the data. About 426,000 fake bookings over 34 months (Jan 2024 to Oct 2026), with some deliberate mess: duplicates, inconsistent market codes and test bookings.
-Cleans and checks it with dbt. 17 models and 71 automated tests. A data-quality log shows how many rows each rule fixed, so no row is lost silently.
-Explains the revenue change. A "bridge" splits the change into four causes: volume, average booking value, mix and take rate.
-Forecasts. Three methods are compared on past data, the best one is used to project the rest of the year, and a simple scenario tool shows what would move the number.
-Main results (last 12 months vs the same period a year earlier)
-	
-Revenue	+4.4%
-Volume	+€0.37M
-Price (average booking value)	+€0.38M
-Mix	-€0.15M
-Take rate	-€0.14M
+</div>
 
-Revenue grew, but mix and a lower take rate gave back part of the growth. That is the point of the bridge: growth alone does not tell the whole story.
+> [!IMPORTANT]
+> **All data is synthetic.** The company is fictional (a B2B accommodation wholesaler). No real company or client data is used.
 
-Forecast: Holt-Winters had a 1.8% average error three months ahead, against 4.1% for the simple "same month last year" benchmark. FY2026 lands about 3.4% below budget.
+## Contents
 
-Files
-File	What it is
-gen_data.py	Generates the synthetic data
-load_raw.py	Loads it into a local database (DuckDB)
-dbt_project/	The dbt models and tests (cleaning, KPIs, bridge)
-forecast.py	Forecast, backtest and scenarios
-export_site_data.py	Exports the results used by the website
-out/	The exported results (JSON)
-Run it
-bash
+[Overview](#overview) · [Pipeline](#pipeline) · [Results](#results) · [Repository structure](#repository-structure) · [Run it](#run-it) · [Limits](#limits)
+
+## Overview
+
+A small end-to-end analytics project that answers two business questions:
+
+1. **Why did revenue change?**
+2. **Where will we end the year versus budget?**
+
+| Step | What happens |
+|---|---|
+| **1. Generate** | About 426,000 fake bookings over 34 months (Jan 2024 to Oct 2026), with deliberate mess: duplicates, inconsistent market codes and test bookings |
+| **2. Clean and test** | dbt cleans the data. 17 models and 71 automated tests. A data-quality log counts the rows each rule fixed, so no row is lost silently |
+| **3. Explain** | A revenue "bridge" splits the change into four causes: volume, average booking value, mix and take rate |
+| **4. Forecast** | Three methods are compared on past data, the best one projects the rest of the year, and a scenario tool shows what would move the number |
+
+## Pipeline
+
+```mermaid
+flowchart LR
+    A[Synthetic data<br/>gen_data.py] --> B[DuckDB<br/>raw tables]
+    B --> C[dbt staging<br/>clean and deduplicate]
+    C --> D[dbt marts<br/>KPI cube and revenue bridge]
+    D --> E[forecast.py<br/>backtest and scenarios]
+    D --> F[out/*.json]
+    E --> F
+    F --> G[Portfolio website]
+```
+
+## Results
+
+Last 12 months versus the same period a year earlier.
+
+| Metric | Change |
+|---|---:|
+| **Revenue** | **+4.4%** |
+| Volume | +€0.37M |
+| Price (average booking value) | +€0.38M |
+| Mix | -€0.15M |
+| Take rate | -€0.14M |
+
+Revenue grew, but mix and a lower take rate gave back part of the growth. That is what the bridge shows: growth alone does not tell the whole story.
+
+**Forecast.** Holt-Winters had a 1.8% average error three months ahead, against 4.1% for the simple "same month last year" benchmark. FY2026 lands about 3.4% below budget.
+
+## Repository structure
+
+| Path | What it is |
+|---|---|
+| [`gen_data.py`](gen_data.py) | Generates the synthetic data |
+| [`load_raw.py`](load_raw.py) | Loads it into a local database (DuckDB) |
+| [`dbt_project/`](dbt_project) | dbt models and tests: cleaning, KPIs, revenue bridge |
+| [`forecast.py`](forecast.py) | Forecast, backtest and scenarios |
+| [`export_site_data.py`](export_site_data.py) | Exports the results used by the website |
+| [`out/`](out) | Exported results (JSON) |
+| [`run_all.sh`](run_all.sh) | Runs everything in order |
+
+## Run it
+
+```bash
 bash run_all.sh
+```
 
 Needs Python 3.11+. Everything runs locally and is free.
 
-Limits
+## Limits
 
 The data is synthetic, so the findings demonstrate the method, not a real market. 34 months is a short history for a forecast.
 
-MIT License.
+## License
+
+MIT, see [`LICENSE`](LICENSE).

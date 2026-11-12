@@ -19,59 +19,14 @@ Raw booking feed → tested dbt models → KPI cube → price-volume-mix-rate re
 | Forecast backtest (3 months ahead) | MAPE: seasonal naive 4.11%, seasonal naive + drift 1.67%, Holt-Winters 1.81% |
 | FY2026 landing vs budget | €11.01M vs €11.39M budget (−3.4%) |
 
-## Get the project
-
-On GitHub, use **Code -> Download ZIP**, or clone it:
-
-```bash
-git clone https://github.com/dmontalban/bedbank-analytics-demo.git
-cd bedbank-analytics-demo
-```
-
-The repository holds the code and the result snapshots in `out/`. The raw data and the DuckDB database are **not** stored in the repo (they are generated, about 48 MB): the commands below create them in a few minutes.
-
 ## Run it
 
-Needs Python 3.11+ (tested on 3.13). Nothing needs a cloud account.
-
-**macOS / Linux / Git Bash / WSL**
-
 ```bash
-bash run_all.sh
+bash run_all.sh                                         # macOS / Linux / WSL
+powershell -ExecutionPolicy Bypass -File .\run_all.ps1  # Windows (PowerShell)
 ```
 
-**Windows (PowerShell)**
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\run_all.ps1
-```
-
-Both do the same: create a virtualenv, install the pinned requirements, generate the data, load it into DuckDB, run `dbt build`, fit the forecasts, export the JSON snapshots to `out/` and export the clean tables to CSV in `export/`. The Windows script stops at the first error and says which step failed.
-
-## What you get
-
-| Where | What |
-|---|---|
-| `out/*.json` | Result snapshots: KPI cube, forecast and backtest, headline facts, dbt summary, 25 reference cases (already in the repo) |
-| `export/*.csv` | The clean marts as CSV: `fct_bookings`, `mart_revenue_cube`, `mart_revenue_bridge`, `mart_budget_vs_actual`, `dq_log` and the five dimensions |
-| `data/raw/*.csv` | The raw synthetic feed, defects included |
-| `data/bedbank.duckdb` | The whole warehouse: schemas `raw`, `staging`, `intermediate`, `marts` |
-
-To query the database yourself:
-
-```python
-import duckdb
-con = duckdb.connect("data/bedbank.duckdb", read_only=True)
-print(con.sql("select * from marts.mart_revenue_bridge").df())
-```
-
-To browse the dbt documentation and lineage graph locally:
-
-```bash
-cd dbt_project
-dbt docs generate --profiles-dir .
-dbt docs serve --profiles-dir .
-```
+It creates a virtualenv, installs the pinned requirements, generates the data, loads it into DuckDB, runs `dbt build`, fits the forecasts, exports the JSON snapshots to `out/` and the clean marts as CSV to `export/`. Python 3.11+ (tested on 3.13). Nothing needs a cloud account. The raw data (`data/raw/`, ~48 MB) and the DuckDB file (`data/bedbank.duckdb`) are generated, not stored in the repo; `out/` already holds the result snapshots.
 
 ## Pipeline
 
@@ -165,7 +120,7 @@ dbt_project/           staging, intermediate, marts, tests, macros
 forecast.py            backtest, final forecast, FY landing, scenario baseline
 export_site_data.py    cube.json, dbt_summary.json, facts.json, reference_cases.json
 out/                   the exported snapshots
-exportar.py            exports the clean marts to CSV (export/)
+exportar.py            the clean marts as CSV (export/)
 run_all.sh             everything, in order (macOS / Linux / WSL)
 run_all.ps1            the same, for Windows PowerShell
 ```

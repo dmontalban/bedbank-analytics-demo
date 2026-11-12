@@ -37,7 +37,7 @@ raw (CSV, every column text)
   -> marts         dimensions, fact, cube, bridge, budget, DQ log    dim_*, fct_bookings, mart_*, dq_log
 ```
 
-The grain of `fct_bookings` is one row per booking. `mart_revenue_cube` is month x market x segment x supplier tier (3,264 cells) and feeds the dashboards and the forecast on the portfolio site.
+The grain of [`fct_bookings`](dbt_project/models/marts/fct_bookings.sql) is one row per booking. [`mart_revenue_cube`](dbt_project/models/marts/mart_revenue_cube.sql) is month x market x segment x supplier tier (3,264 cells) and feeds the dashboards and the forecast on the portfolio site.
 
 ### Data-quality rules (each one is counted in `marts.dq_log`)
 
@@ -89,7 +89,7 @@ rate   = sum_i T_cur_i x (TR_cur_i - TR_base_i)
 volume + mix + price + rate = R_cur - R_base                  (an identity, asserted in SQL, Python and JavaScript)
 ```
 
-The bridge is computed twice and the two agree: in SQL (`mart_revenue_bridge`) and in Python (`export_site_data.py`). `out/reference_cases.json` holds 25 expected cases (5 periods x 5 filter combinations) so that any other implementation, such as the JavaScript behind the portfolio dashboard, can be tested against them.
+The bridge is computed twice and the two agree: in SQL ([`mart_revenue_bridge`](dbt_project/models/marts/mart_revenue_bridge.sql)) and in Python ([`export_site_data.py`](export_site_data.py)). [`out/reference_cases.json`](out/reference_cases.json) holds 25 expected cases (5 periods x 5 filter combinations) so that any other implementation, such as the JavaScript behind the portfolio dashboard, can be tested against them.
 
 Last 12 months versus the same 12 months a year earlier: €10.46M -> €10.92M (+4.4%). Volume +€0.37M, price (ABV) +€0.38M, mix −€0.15M, take rate −€0.14M.
 
@@ -113,17 +113,21 @@ The scenario model behind the planner on the portfolio site treats revenue as `g
 
 ## Structure
 
-```
-gen_data.py            synthetic bookings, customers, budget (seeded)
-load_raw.py            lands the CSVs in DuckDB, schema raw, every column text
-dbt_project/           staging, intermediate, marts, tests, macros
-forecast.py            backtest, final forecast, FY landing, scenario baseline
-export_site_data.py    cube.json, dbt_summary.json, facts.json, reference_cases.json
-out/                   the exported snapshots
-exportar.py            the clean marts as CSV (export/)
-run_all.sh             everything, in order (macOS / Linux / WSL)
-run_all.ps1            the same, for Windows PowerShell
-```
+| Part | What it does |
+|---|---|
+| [`gen_data.py`](gen_data.py) | Synthetic bookings, customers and budget (seeded), with the defects planted on purpose |
+| [`load_raw.py`](load_raw.py) | Lands the CSVs in DuckDB, schema `raw`, every column text |
+| [`dbt_project/models/staging/`](dbt_project/models/staging/) | Staging: type, deduplicate, normalise (`stg_*`) |
+| [`dbt_project/models/intermediate/`](dbt_project/models/intermediate/) | Derived fields: lead time and net amounts |
+| [`dbt_project/models/marts/`](dbt_project/models/marts/) | Dimensions, fact table, KPI cube, revenue bridge, budget vs actual and the DQ log |
+| [`dbt_project/tests/`](dbt_project/tests/) | The 10 business-rule tests and the custom generic test |
+| [`dbt_project/macros/`](dbt_project/macros/) | Market-code normalisation and schema naming |
+| [`forecast.py`](forecast.py) | Backtest, final forecast, FY landing, scenario baseline |
+| [`export_site_data.py`](export_site_data.py) | `cube.json`, `dbt_summary.json`, `facts.json`, `reference_cases.json` |
+| [`exportar.py`](exportar.py) | The clean marts as CSV (`export/`) |
+| [`out/`](out/) | The exported snapshots |
+| [`run_all.sh`](run_all.sh) / [`run_all.ps1`](run_all.ps1) | Everything, in order (macOS / Linux / WSL and Windows PowerShell) |
+| [`LICENSE`](LICENSE) | MIT |
 
 ## Limits worth knowing
 

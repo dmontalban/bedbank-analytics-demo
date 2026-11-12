@@ -13,3 +13,4 @@ python load_raw.py                                   # data/bedbank.duckdb  (sch
 (cd dbt_project && dbt build --profiles-dir .)       # staging -> marts, with tests
 python forecast.py                                   # out/forecast.json
 python export_site_data.py                           # out/cube.json, facts.json, dbt_summary.json, reference_cases.json
+python exportar.py                                   # export/*.csv  (clean marts as CSV)
